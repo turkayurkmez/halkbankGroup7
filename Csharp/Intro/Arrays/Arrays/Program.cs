@@ -27,3 +27,11 @@ int birlerBasamagindakiRakam = number % 10;
 int onlarBasamagindakiRakam = number / 10;
 
 Console.WriteLine($"{onlar[onlarBasamagindakiRakam]} {birler[birlerBasamagindakiRakam]}");
+
+for (int i = 1; i < 100; i++)
+{
+    int bir = i % 10;
+    int on = i / 10;
+
+    Console.WriteLine($"{onlar[on]} {birler[bir]}");
+}

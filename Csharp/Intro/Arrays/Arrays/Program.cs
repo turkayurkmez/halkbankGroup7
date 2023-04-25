@@ -18,20 +18,31 @@ char[] letters = new char[29];
 /*
  *  45.656.136
  */
-string[] birler = { "", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
-string[] onlar = { "", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
+
 
 Console.WriteLine("İki basamaklı bir sayı giriniz");
 int number = Convert.ToInt32(Console.ReadLine());
-int birlerBasamagindakiRakam = number % 10;
-int onlarBasamagindakiRakam = number / 10;
 
-Console.WriteLine($"{onlar[onlarBasamagindakiRakam]} {birler[birlerBasamagindakiRakam]}");
+Console.WriteLine(convertToRead(number));
 
 for (int i = 1; i < 100; i++)
 {
-    int bir = i % 10;
-    int on = i / 10;
+    Console.WriteLine(convertToRead(i));
+}
 
-    Console.WriteLine($"{onlar[on]} {birler[bir]}");
+
+
+
+
+string convertToRead(int number)
+{
+    string[] birler = { "", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
+    string[] onlar = { "", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
+
+    int birlerBasamagindakiRakam = number % 10;
+    int onlarBasamagindakiRakam = number / 10;
+
+    return $"{onlar[onlarBasamagindakiRakam]} {birler[birlerBasamagindakiRakam]}";
+
+
 }

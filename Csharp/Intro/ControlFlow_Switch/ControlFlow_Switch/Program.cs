@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("İşe neyle gitmeyi tercih edersiniz\n1. Taksi\n2.Özel araç\n3. Toplu taşıma");
+Console.WriteLine("İşe neyle gitmeyi tercih edersiniz\n1. Taksi\n2.Özel araç\n3. Toplu taşıma\n4.Marmaray");
 string answer = Console.ReadLine();
 if (answer == "1")
 {
@@ -27,6 +27,7 @@ switch (answer)
         Console.WriteLine("Özel araç, kısa vadede hızlı uzun vadede masraflıdır");
         break;
     case "3":
+    case "4":
         Console.WriteLine("Toplu taşıma ucuzdur ancak sinirlerinizi yıpratır");
         break;
     default:
@@ -34,5 +35,25 @@ switch (answer)
         break;
 }
 
+switch (DateTime.Now.DayOfWeek)
+{
+    case DayOfWeek.Sunday:
+        break;
+    case DayOfWeek.Monday:
+        break;
+    case DayOfWeek.Tuesday:
+        break;
+    case DayOfWeek.Wednesday:
+        break;
+    case DayOfWeek.Thursday:
+        break;
+    case DayOfWeek.Friday:
+        break;
+    case DayOfWeek.Saturday:
+
+        break;
+    default:
+        break;
+}
 
 

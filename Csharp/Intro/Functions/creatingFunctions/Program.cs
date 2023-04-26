@@ -21,12 +21,11 @@ do
     while (!isGameOver)
     {
         int suggest = getSuggestFromUser();
-        bool isEqual = compare(target, suggest);
-        isGameOver = isEqual;
+        isGameOver = compare(target, suggest);
     }
 
     Console.WriteLine("Tekrar oynamak ister misiniz (E/H)?");
-
+    Console.WriteLine();
 } while (Console.ReadLine() != "E");
 
 

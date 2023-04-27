@@ -1,12 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LooselyCoupled
+﻿namespace LooselyCoupled
 {
-    internal class Insan
+    public class Insan
     {
+        public void Giy(IKiyafet kiyafet)
+        {
+
+        }
     }
+
+    public interface IKiyafet
+    {
+
+    }
+
+    public class UstGiyim : IKiyafet
+    {
+
+    }
+
+
+    public class Kazak : UstGiyim
+    {
+
+    }
+    public class KirmiziKazak : Kazak
+    {
+
+    }
+
+
 }

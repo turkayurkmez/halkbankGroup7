@@ -15,19 +15,25 @@
 
         private async void buttonForLoop_Click(object sender, EventArgs e)
         {
-            Task.Run(counter);
-            MessageBox.Show("dosyalar tarandı");
+            var task = Task.Run(counter);
+            if (task.IsCompleted)
+            {
+                MessageBox.Show("dosyalar tarandı");
+            }
+
         }
 
 
-        async Task counter()
+        Task counter()
         {
-
+            var task = Task.CompletedTask;
             for (int i = 0; i <= 10000; i++)
             {
                 labelResult.Text = i.ToString();
                 progressBar1.Value = i / 100;
             }
+
+            return task;
 
         }
 

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Product>
+
+<html>
+<head>
+
+</head>
+<body>
+    Merhaba @ViewBag.Name
+
+    @if (ViewBag.Hour >= 12)
+    {
+        <p>İyi Günler</p>
+    }
+    else
+    {
+        <p>Günaydın!</p>
+    }
+
+    <p>
+        Yeni ürün eklemek için <a asp-controller="Home" asp-action="NewProduct">tıklayın</a>
+    </p>
+
+    <ul>
+        @foreach (dynamic product in ViewBag.Products)
+        {
+            <li>@product</li>
+        }
+    </ul>
+
+    <div>
+        <div>
+            @foreach (var productItem in Model)
+            {
+                <div>
+                    <div>
+                        <h3>@productItem.Name</h3>
+                        <p>@productItem.Description</p>
+                        <p>@productItem.Price TL</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+   
+</body>
+</html>

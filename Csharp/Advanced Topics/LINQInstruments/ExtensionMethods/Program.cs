@@ -7,3 +7,5 @@ number.GetSquare();
 
 Random random = new Random();
 Console.WriteLine(random.NextString(8));
+string name = "Halk Bank";
+Console.WriteLine(name.TrimMiddleWhiteSpace());

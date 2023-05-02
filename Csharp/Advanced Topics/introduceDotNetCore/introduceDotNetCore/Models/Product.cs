@@ -8,8 +8,12 @@ namespace introduceDotNetCore.Models
         [Required(ErrorMessage = "Ad alanını doldurunuz")]
         [MinLength(3, ErrorMessage = "En az üç harften oluşmalıdır")]
         public string Name { get; set; }
-        public string Description { get; set; }
+
+        public string? Description { get; set; }
         public double? Price { get; set; }
-        public DateTime ProductionDate { get; set; }
+        public DateTime? ProductionDate { get; set; }
+        public int? StockCount { get; set; }
+        //[EmailAddress]
+        //public string EmailAddress { get; set; }
     }
 }

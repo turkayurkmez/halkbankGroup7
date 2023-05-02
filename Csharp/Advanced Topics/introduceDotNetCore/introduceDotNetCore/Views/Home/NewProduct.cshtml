@@ -1,33 +1,21 @@
 ﻿@model Product
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>NewProduct</title>
-</head>
-<body>
-    <form asp-action="NewProduct" method="post">
-       <div>
-           <input placeholder="Ürün Adı" asp-for="Name"/>
-           <span asp-validation-for="Name"></span>
-       </div>
-       <div>
-           <input placeholder="Açıklama" asp-for="Description" />
-
-       </div>
-        <div>
-            <input placeholder="Fiyat" asp-for="Price" />
-
-        </div>
-        <div>
-            <input placeholder="Fiyat" asp-for="ProductionDate" />
-        </div>
-        <button type="submit">Gönder</button>
-    </form>
-</body>
-</html>
+<form asp-action="NewProduct" method="post">
+    <div>
+        <input class="form-control" placeholder="Ürün Adı" asp-for="Name" />
+        <span class="form-control" asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <input class="form-control" placeholder="Açıklama" asp-for="Description" />
+    </div>
+    <div>
+        <input class="form-control" placeholder="Fiyat" asp-for="Price" />
+    </div>
+    <div>
+        <input class="form-control" asp-for="ProductionDate" />
+    </div>
+    <div>
+        <input class="form-control" asp-for="StockCount" />
+    </div>
+    <button type="submit" class="btn btn-success">Gönder</button>
+</form>

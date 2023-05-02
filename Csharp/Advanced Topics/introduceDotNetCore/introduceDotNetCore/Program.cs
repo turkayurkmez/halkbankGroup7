@@ -33,6 +33,7 @@ var app = builder.Build();
 //1. Controller'ın action'una git
 //2. Sayfada gösterilecek veriyi hazırla (Model)
 //3. View'i oluştur
+app.UseStaticFiles();
 
 app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 

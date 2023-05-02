@@ -34,7 +34,7 @@ namespace introduceDotNetCore.Controllers
 
             if (ModelState.IsValid)
             {
-                return Redirect("/");
+                return View("Result", product);
             }
             return View();
         }

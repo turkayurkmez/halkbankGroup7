@@ -17,7 +17,7 @@ namespace eshop.MVC.Controllers
 
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
 
@@ -30,7 +30,7 @@ namespace eshop.MVC.Controllers
             //};
 
             // var productService = new ProductService();
-            var products = _productService.GetProducts();
+            var products = await _productService.GetProductsAsync();
             return View(products);
         }
 

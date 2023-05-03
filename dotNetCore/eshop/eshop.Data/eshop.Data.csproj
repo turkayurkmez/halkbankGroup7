@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eshop.Data\eshop.Data.csproj" />
     <ProjectReference Include="..\eshop.Entities\eshop.Entities.csproj" />
   </ItemGroup>
 

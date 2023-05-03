@@ -17,5 +17,10 @@ namespace eshop.Application
 
             return products;
         }
+
+        public Task<IEnumerable<Product>> GetProductsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

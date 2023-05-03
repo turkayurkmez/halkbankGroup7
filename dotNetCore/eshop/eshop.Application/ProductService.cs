@@ -11,6 +11,12 @@ namespace eshop.Application
         {
             this.productRepository = productRepository;
         }
+
+        public async Task<Product?> GetProductAsync(int id)
+        {
+            return await productRepository.Get(id);
+        }
+
         //Aşağıdaki senkron fonksiyonu GetProductsAsync ile asenkron yaptık:
         //public IEnumerable<Product> GetProducts()
         //{
@@ -29,6 +35,12 @@ namespace eshop.Application
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
             var products = await productRepository.GetAll();
+            return products;
+        }
+
+        public async Task<IEnumerable<Product>> GetProductsByCategory(string? categoryId)
+        {
+            IList<Product> products = await productRepository.GetProductsByCategoryId(categoryId);
             return products;
         }
     }

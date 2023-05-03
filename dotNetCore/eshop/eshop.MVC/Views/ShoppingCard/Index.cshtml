@@ -1,0 +1,46 @@
+﻿@model ShoppingCardCollection
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model.Products.Count >0)
+{
+    <div class="alert alert-success">
+        Sepetinizde toplam @Model.TotalItemsQuantity() adet ürün bulunuyor.
+
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Ürün Adı
+                </th>
+                <th></th>
+                <th>Ürün Adedi</th>
+                <th>Ara Toplam</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td><img src="@item.Product.ImageUrl" class="img-fluid" /></td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Product.Price * item.Quantity) TL</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Toplam Sepet tutarı: @Model.GetTotalPrice() TL</td>
+            </tr>
+        </tfoot>
+    </table>
+}else
+{
+    <div class="alert alert-danger">
+        Sepetinizde ürün bulunmuyor
+    </div>
+}
+

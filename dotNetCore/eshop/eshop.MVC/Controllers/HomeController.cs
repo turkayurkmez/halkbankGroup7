@@ -17,8 +17,9 @@ namespace eshop.MVC.Controllers
 
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? categoryId = "all")
         {
+            //Stopwatch stopwatch = Stopwatch.StartNew();
 
 
             //var products = new List<Product>
@@ -30,7 +31,10 @@ namespace eshop.MVC.Controllers
             //};
 
             // var productService = new ProductService();
-            var products = await _productService.GetProductsAsync();
+            var products = categoryId == "all" ? await _productService.GetProductsAsync() :
+                                                 await _productService.GetProductsByCategory(categoryId);
+            //stopwatch.Stop();
+            //ViewBag.Miliseconds = stopwatch.ElapsedMilliseconds;
             return View(products);
         }
 

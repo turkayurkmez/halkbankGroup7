@@ -1,19 +1,27 @@
-using eshop.Application;
-using eshop.Data.Data;
-using eshop.Data.Repositories;
+using eshop.MVC.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, EFProductRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+//builder.Services.AddScoped<IProductService, ProductService>();
+//builder.Services.AddScoped<IProductRepository, EFProductRepository>();
+//builder.Services.AddScoped<ICategoryService, CategoryService>();
+//builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("db");
-builder.Services.AddDbContext<EshopDbContext>(option => option.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<EshopDbContext>(option => option.UseSqlServer(connectionString));
+builder.Services.AddIoCDetails(connectionString);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.AccessDeniedPath = "/Users/AccessDenied";
+                    option.LoginPath = "/Users/Login";
+                    option.ReturnUrlParameter = "gidilecekUrl";
+                });
 
 builder.Services.AddSession(opt =>
 {
@@ -37,7 +45,7 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,10 +1,12 @@
 ﻿using eshop.Application;
 using eshop.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eshop.MVC.Controllers
 {
+    [Authorize(Roles = "Admin,Editor")]
     public class ProductsController : Controller
     {
         private IProductService productService;
@@ -22,6 +24,7 @@ namespace eshop.MVC.Controllers
             var products = await productService.GetProductsAsync();
             return View(products);
         }
+
 
         public async Task<IActionResult> Create()
         {

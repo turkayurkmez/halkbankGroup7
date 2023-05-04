@@ -1,4 +1,5 @@
 ﻿using eshop.Application;
+using eshop.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -27,6 +28,41 @@ namespace eshop.MVC.Controllers
             ViewBag.Categories = await getCategoriesForSelect();
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await productService.CreateNew(product);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Categories = await getCategoriesForSelect();
+            return View();
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var product = await productService.GetProductAsync(id);
+            if (product != null)
+            {
+                ViewBag.Categories = await getCategoriesForSelect();
+                return View(product);
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await productService.Update(product);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Categories = await getCategoriesForSelect();
+            return View();
+        }
+
+
 
         private async Task<IEnumerable<SelectListItem>> getCategoriesForSelect()
         {

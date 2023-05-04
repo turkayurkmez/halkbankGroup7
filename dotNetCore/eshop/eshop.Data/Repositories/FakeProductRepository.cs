@@ -17,8 +17,8 @@ namespace eshop.Data.Repositories
         }
         public Task CreateNew(Product entity)
         {
-            throw new NotImplementedException();
-
+            products.Add(entity);
+            return Task.CompletedTask;
         }
 
         public Task Delete(int id)
@@ -52,7 +52,7 @@ namespace eshop.Data.Repositories
 
         public Task Update(Product entity)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

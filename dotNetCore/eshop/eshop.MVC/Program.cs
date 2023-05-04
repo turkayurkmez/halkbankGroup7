@@ -1,15 +1,19 @@
 using eshop.Application;
+using eshop.Data.Data;
 using eshop.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IProductService, ProductService>();
-builder.Services.AddTransient<IProductRepository, FakeProductRepository>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<ICategoryRepository, FakeCategoryRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, EFProductRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 
+var connectionString = builder.Configuration.GetConnectionString("db");
+builder.Services.AddDbContext<EshopDbContext>(option => option.UseSqlServer(connectionString));
 
 builder.Services.AddSession(opt =>
 {

@@ -12,6 +12,11 @@ namespace eshop.Application
             this.productRepository = productRepository;
         }
 
+        public async Task CreateNew(Product product)
+        {
+            await productRepository.CreateNew(product);
+        }
+
         public async Task<Product?> GetProductAsync(int id)
         {
             return await productRepository.Get(id);
@@ -42,6 +47,11 @@ namespace eshop.Application
         {
             IList<Product> products = await productRepository.GetProductsByCategoryId(categoryId);
             return products;
+        }
+
+        public async Task Update(Product product)
+        {
+            await productRepository.Update(product);
         }
     }
 }

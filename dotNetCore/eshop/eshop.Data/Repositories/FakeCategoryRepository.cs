@@ -36,7 +36,7 @@ namespace eshop.Data.Repositories
 
         public Task Update(Category entity)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

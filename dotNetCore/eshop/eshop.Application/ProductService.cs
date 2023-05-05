@@ -1,4 +1,5 @@
-﻿using eshop.Data.Repositories;
+﻿using eshop.Application.DataTransferObjects.Requests;
+using eshop.Data.Repositories;
 using eshop.Entities;
 
 namespace eshop.Application
@@ -15,6 +16,27 @@ namespace eshop.Application
         public async Task CreateNew(Product product)
         {
             await productRepository.CreateNew(product);
+        }
+
+        public async Task<int> CreateNew(CreateNewProductRequest request)
+        {
+            var product = new Product
+            {
+                CategoryId = request.CategoryId,
+                Name = request.Name,
+                Description = request.Description,
+                DiscountRate = request.DiscountRate,
+                ImageUrl = request.ImageUrl,
+                Price = request.Price
+            };
+            await productRepository.CreateNew(product);
+            return product.Id;
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            await productRepository.Delete(id);
+
         }
 
         public async Task<Product?> GetProductAsync(int id)
@@ -49,9 +71,40 @@ namespace eshop.Application
             return products;
         }
 
+        public async Task<IEnumerable<Product>> GetProductsByNameAsync(string name)
+        {
+            var products = await productRepository.SearchProductsByName(name);
+            return products;
+        }
+
+        public async Task<bool> IsProductExists(int id)
+        {
+            var isExists = await productRepository.IsExists(id);
+            return isExists;
+
+        }
+
         public async Task Update(Product product)
         {
             await productRepository.Update(product);
+        }
+
+        public async Task<int> Update(UpdateProductRequest request)
+        {
+            var product = new Product
+            {
+                CategoryId = request.CategoryId,
+                Description = request.Description,
+                DiscountRate = request.DiscountRate,
+                Id = request.Id,
+                ImageUrl = request.ImageUrl,
+                Name = request.Name,
+                Price = request.Price
+            };
+
+            await productRepository.Update(product);
+            return product.Id;
+
         }
     }
 }

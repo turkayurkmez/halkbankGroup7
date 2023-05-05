@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eshop.Entities
+namespace eshop.Application.DataTransferObjects.Requests
 {
-    public class Product : IEntity
+    public class UpdateProductRequest
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Ürün adını boş bırakmayınız!")]
@@ -18,7 +18,5 @@ namespace eshop.Entities
         public string? ImageUrl { get; set; } = "https://cdn.dsmcdn.com//ty160/product/media/images/20210819/16/120151286/123408601/5/5_org.jpg";
 
         public int? CategoryId { get; set; }
-
-        public Category? Category { get; set; }
     }
 }

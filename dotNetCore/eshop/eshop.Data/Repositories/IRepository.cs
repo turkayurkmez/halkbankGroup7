@@ -11,6 +11,8 @@ namespace eshop.Data.Repositories
         Task Delete(int id);
         Task CreateNew(T entity);
 
+        Task<bool> IsExists(int id);
+
 
     }
 }

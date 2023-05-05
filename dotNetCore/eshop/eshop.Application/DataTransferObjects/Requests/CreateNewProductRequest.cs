@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eshop.Entities
+namespace eshop.Application.DataTransferObjects.Requests
 {
-    public class Product : IEntity
+    public class CreateNewProductRequest
     {
-        public int Id { get; set; }
         [Required(ErrorMessage = "Ürün adını boş bırakmayınız!")]
         [MinLength(3, ErrorMessage = "En az 3 karakter içermelidir")]
         [MaxLength(150, ErrorMessage = "En fazla 150 karakter")]
@@ -18,7 +17,5 @@ namespace eshop.Entities
         public string? ImageUrl { get; set; } = "https://cdn.dsmcdn.com//ty160/product/media/images/20210819/16/120151286/123408601/5/5_org.jpg";
 
         public int? CategoryId { get; set; }
-
-        public Category? Category { get; set; }
     }
 }

@@ -33,6 +33,11 @@ namespace eshop.Data.Repositories
             return await eshopDbContext.Categories.ToListAsync();
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Update(Category entity)
         {
             throw new NotImplementedException();

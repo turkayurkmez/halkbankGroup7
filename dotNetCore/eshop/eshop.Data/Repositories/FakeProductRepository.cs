@@ -45,6 +45,11 @@ namespace eshop.Data.Repositories
 
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IList<Product>?> SearchProductsByName(string productName)
         {
             throw new NotImplementedException();

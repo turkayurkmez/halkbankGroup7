@@ -34,6 +34,11 @@ namespace eshop.Data.Repositories
             return Task.FromResult(categories);
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Update(Category entity)
         {
             return Task.CompletedTask;

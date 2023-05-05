@@ -48,6 +48,11 @@ namespace eshop.Data.Repositories
             return products;
         }
 
+        public async Task<bool> IsExists(int id)
+        {
+            return await eshopDbContext.Products.AnyAsync(p => p.Id == id);
+        }
+
         public async Task<IList<Product>?> SearchProductsByName(string productName)
         {
             var products = await eshopDbContext.Products.Where(p => p.Name.Contains(productName)).ToListAsync();
